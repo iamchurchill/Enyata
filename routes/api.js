@@ -3,8 +3,8 @@ const apiRoutes = require('../controllers/api/v1/');
 
 const router = express.Router();
 
-router.get('', apiRoutes.getIncidents);
+router.get('/incidents', apiRoutes.getIncidents);
 
-router.post('', apiRoutes.postIncidents);
+router.post('/incident/add', apiRoutes.postIncidents);
 
 module.exports = router;
