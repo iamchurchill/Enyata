@@ -1,10 +1,10 @@
 const express = require('express');
-const apiRoutes = require('../controllers/api/v1/');
+const incidentController = require('../controllers/api/v1/');
 
 const router = express.Router();
 
-router.get('/incidents', apiRoutes.getIncidents);
+router.get('/incidents', incidentController.getIncidents);
 
-router.post('/incident/add', apiRoutes.postIncidents);
+router.post('/incident/add', incidentController.postIncidents);
 
 module.exports = router;
