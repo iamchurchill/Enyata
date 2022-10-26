@@ -5,7 +5,6 @@ dot_env.config();
 const apiRoutes =  require('./routes/');
 
 const PORT = process.env.PORT || 8888;
-
 const app = express();
 
 app.use(express.json());
