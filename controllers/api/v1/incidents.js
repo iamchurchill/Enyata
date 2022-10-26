@@ -2,7 +2,7 @@ const axios = require('axios');
 const { sequelize, Sequelize, User } = require('../../../models')
 
 module.exports.getIncidents = (request, response, next) => {
-    const weather_api_url = process.env.WEATEHER_API_URL;
+    const weather_api_url = process.env.WEATHER_API_URL;
     let weather_result = {};
 
     const config = {
