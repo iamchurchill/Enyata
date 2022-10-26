@@ -15,7 +15,7 @@ module.exports.getIncidents = (request, response, next) => {
             console.log(JSON.stringify(result.data));
         })
         .catch(error => {
-            console.log('Error: ', error.message);
+            console.error('Oops!! something happened %s ', error.message);
         });
 
     response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
