@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       weather_report: {
-        type: Sequelize.STRING
+        type: Sequelize.JSON
       },
       createdAt: {
         allowNull: false,

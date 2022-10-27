@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Incidents.init({
-    client_id: DataTypes.STRING,
+    client_id: DataTypes.INT,
     incident_desc: DataTypes.STRING,
     city: DataTypes.STRING,
     country: DataTypes.STRING,
-    date: DataTypes.STRING,
-    weather_report: DataTypes.STRING
+    date: DataTypes.DATE,
+    weather_report: DataTypes.JSON
   }, {
     sequelize,
     modelName: 'Incidents',
