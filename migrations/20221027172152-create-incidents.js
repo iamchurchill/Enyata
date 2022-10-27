@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       client_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       incident_desc: {
         type: Sequelize.STRING
@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       date: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       weather_report: {
         type: Sequelize.JSON
