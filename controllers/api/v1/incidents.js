@@ -1,25 +1,22 @@
 const axios = require('axios');
-const { sequelize, Sequelize, User } = require('../../../models')
+const {sequelize, Sequelize, User} = require('../../../models')
 
 module.exports.getIncidents = (request, response, next) => {
-    const weather_api_url = process.env.WEATHER_API_URL;
-    let weather_result = {};
-
-    const config = {
-        method: 'get',
-        url: weather_api_url,
-        headers: { }
-    };
-
-    axios(config)
+    const {WEATHER_API_URL,WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG } = process.env;
+    axios.get(WEATHER_API_URL, {
+        params: {
+            lat: WEATHER_LAT,
+            lon: WEATHER_LNG,
+            appid: WEATHER_API_KEY,
+        }
+    })
         .then(result => {
-            console.log(JSON.stringify(result.data));
+            console.log(result.data);
+            response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
         })
         .catch(error => {
             console.error('Oops!! something happened %s ', error.message);
         });
-
-    response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
 }
 
 module.exports.postIncidents = (request, response, next) => {
