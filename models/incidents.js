@@ -14,12 +14,31 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Incidents.init({
-    client_id: DataTypes.INTEGER,
-    incident_desc: DataTypes.STRING,
-    city: DataTypes.STRING,
-    country: DataTypes.STRING,
-    date: DataTypes.DATE,
-    weather_report: DataTypes.JSON
+    client_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    incident_desc: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: DataTypes.DATE,
+      default: Date.now()
+    },
+    weather_report: {
+      type: DataTypes.JSON,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Incidents',
