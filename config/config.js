@@ -1,7 +1,3 @@
-const fs = require('fs');
-
-const {DB_USER, DB_PASSWORD, DB, DB_HOST, DB_PORT, DB_DIALECT} = process.env;
-
 module.exports = {
   development: {
     username: process.env.DB_USER,
