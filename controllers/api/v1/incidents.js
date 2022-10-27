@@ -27,13 +27,13 @@ module.exports.postIncidents = (request, response, next) => {
             appid: WEATHER_API_KEY,
         }
     })
-        .then(weather_report => {
+        .then(weather => {
             Incidents.create({
                 client_id: client_id,
                 incident_desc: incident_desc,
                 city: city,
                 country: country,
-                weather_report: weather_report.data
+                weather_report: weather.data
             }).then(result => {
                 return response.status(201).json({status: true, message: "Successfully created", data: result});
             }).catch(error => {
