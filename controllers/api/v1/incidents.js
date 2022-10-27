@@ -28,14 +28,15 @@ module.exports.postIncidents = (request, response, next) => {
         }
     })
         .then(weather_report => {
+            console.log(weather_report);
             Incidents.create({
                 client_id: client_id,
                 incident_desc: incident_desc,
                 city: city,
                 country: country,
-                weather_report: weather_report
+                weather_report: weather_report.data
             }).then(result => {
-                response.status(201).json({status: true, message: "Successfully created", data: result.data});
+                return response.status(201).json({status: true, message: "Successfully created", data: result});
             }).catch(error => {
                 console.error('Oops!! something happened %s ', error.message);
             });
