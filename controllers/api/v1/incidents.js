@@ -1,8 +1,9 @@
 const axios = require('axios');
-const {sequelize, Sequelize, User} = require('../../../models')
+const {sequelize, Sequelize, Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
 module.exports.getIncidents = (request, response, next) => {
+    const {client_id, incident_desc, city, country} = request.body;
     const {WEATHER_API_URL, WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG} = process.env;
     axios.get(WEATHER_API_URL, {
         params: {
@@ -13,6 +14,8 @@ module.exports.getIncidents = (request, response, next) => {
     })
         .then(result => {
             console.log(result.data);
+            console.log(client_id);
+            console.log(incident_desc);
             response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
         })
         .catch(error => {
