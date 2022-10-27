@@ -28,7 +28,6 @@ module.exports.postIncidents = (request, response, next) => {
         }
     })
         .then(weather_report => {
-            console.log(weather_report);
             Incidents.create({
                 client_id: client_id,
                 incident_desc: incident_desc,
