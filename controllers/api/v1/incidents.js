@@ -2,8 +2,16 @@ const axios = require('axios');
 const {sequelize, Sequelize, Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
-module.exports.getIncidents = (request, response, next) => {
-    response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
+module.exports.getIncidents = async (request, response, next) => {
+
+    const data = await Incidents.findAll();
+
+    /*Incidents.findAll().then((result) => {
+        console.log(result);
+    }).catch(error =>  {
+        console.error('Error : %s', error);
+    });*/
+    response.status(200).json({status: true, message: "Successfully retrieved", data: data});
 }
 
 module.exports.postIncidents = (request, response, next) => {
@@ -26,6 +34,8 @@ module.exports.postIncidents = (request, response, next) => {
         }
     })
         .then(result => {
+
+
             response.status(201).json({status: true, message: "Successfully created", data: {}});
         })
         .catch(error => {
