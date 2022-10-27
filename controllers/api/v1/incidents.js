@@ -3,8 +3,21 @@ const {sequelize, Sequelize, Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
 module.exports.getIncidents = (request, response, next) => {
-    const {client_id, incident_desc, city, country} = request.body;
+    response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
+}
+
+module.exports.postIncidents = (request, response, next) => {
     const {WEATHER_API_URL, WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG} = process.env;
+    const {client_id, incident_desc, city, country} = request.body;
+    const errors = validationResult(request);
+    if (!errors.isEmpty()) {
+        return response.status(422).json({status: false, errors: errors.array()})
+    }
+    console.log(client_id);
+    console.log(incident_desc);
+    console.log(city);
+    console.log(country);
+
     axios.get(WEATHER_API_URL, {
         params: {
             lat: WEATHER_LAT,
@@ -13,20 +26,9 @@ module.exports.getIncidents = (request, response, next) => {
         }
     })
         .then(result => {
-            console.log(result.data);
-            console.log(client_id);
-            console.log(incident_desc);
-            response.status(200).json({status: true, message: "Successfully retrieved", data: {}});
+            response.status(201).json({status: true, message: "Successfully created", data: {}});
         })
         .catch(error => {
             console.error('Oops!! something happened %s ', error.message);
         });
-}
-
-module.exports.postIncidents = (request, response, next) => {
-    const errors = validationResult(request);
-    if (!errors.isEmpty()) {
-        return response.status(422).json({status: false, errors: errors.array()})
-    }
-    response.status(201).json({status: true, message: "Successfully created", data: {}});
 }
