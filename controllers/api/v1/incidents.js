@@ -4,8 +4,10 @@ const {validationResult} = require('express-validator');
 
 module.exports.getIncidents = async (request, response, next) => {
     Incidents.findAll().then((result) => {
-        console.log(result);
-        response.status(200).json({status: true, message: "Successfully retrieved", data: result});
+        if (result.length === 0){
+            return response.status(200).json({status: false, message: "No data found"});
+        }
+        return response.status(200).json({status: true, message: "Successfully retrieved", data: result});
     }).catch(error => {
         console.error('Oops!! something happened %s ', error.message);
     });
@@ -33,7 +35,7 @@ module.exports.postIncidents = (request, response, next) => {
                 country: country,
                 weather_report: weather_report
             }).then(result => {
-                response.status(201).json({status: true, message: "Successfully created", data: result});
+                response.status(201).json({status: true, message: "Successfully created", data: result.data});
             }).catch(error => {
                 console.error('Oops!! something happened %s ', error.message);
             });
