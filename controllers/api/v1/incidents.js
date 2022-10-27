@@ -3,7 +3,7 @@ const {sequelize, Sequelize, User} = require('../../../models')
 const {validationResult} = require('express-validator');
 
 module.exports.getIncidents = (request, response, next) => {
-    const {WEATHER_API_URL,WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG } = process.env;
+    const {WEATHER_API_URL, WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG} = process.env;
     axios.get(WEATHER_API_URL, {
         params: {
             lat: WEATHER_LAT,
