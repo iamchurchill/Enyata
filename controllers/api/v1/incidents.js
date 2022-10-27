@@ -3,15 +3,12 @@ const {sequelize, Sequelize, Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
 module.exports.getIncidents = async (request, response, next) => {
-
-    const data = await Incidents.findAll();
-
-    /*Incidents.findAll().then((result) => {
-        console.log(result);
+    Incidents.findAll().then((data) => {
+        console.log(data);
+        response.status(200).json({status: true, message: "Successfully retrieved", data: data});
     }).catch(error =>  {
         console.error('Error : %s', error);
-    });*/
-    response.status(200).json({status: true, message: "Successfully retrieved", data: data});
+    });
 }
 
 module.exports.postIncidents = (request, response, next) => {
