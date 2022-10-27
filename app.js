@@ -1,6 +1,6 @@
 const express = require('express');
-const dot_env = require('dotenv');
-dot_env.config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const apiRoutes =  require('./routes/api');
 const errorController = require('./controllers/api/v1/error');
