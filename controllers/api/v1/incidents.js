@@ -6,8 +6,8 @@ module.exports.getIncidents = async (request, response, next) => {
     Incidents.findAll().then((data) => {
         console.log(data);
         response.status(200).json({status: true, message: "Successfully retrieved", data: data});
-    }).catch(error =>  {
-        console.error('Error : %s', error);
+    }).catch(error => {
+        console.error('Oops!! something happened %s ', error.message);
     });
 }
 
@@ -18,11 +18,6 @@ module.exports.postIncidents = (request, response, next) => {
     if (!errors.isEmpty()) {
         return response.status(422).json({status: false, errors: errors.array()})
     }
-    console.log(client_id);
-    console.log(incident_desc);
-    console.log(city);
-    console.log(country);
-
     axios.get(WEATHER_API_URL, {
         params: {
             lat: WEATHER_LAT,
@@ -30,10 +25,18 @@ module.exports.postIncidents = (request, response, next) => {
             appid: WEATHER_API_KEY,
         }
     })
-        .then(result => {
-
-
-            response.status(201).json({status: true, message: "Successfully created", data: {}});
+        .then(data => {
+            Incidents.create({
+                client_id: client_id,
+                incident_desc: incident_desc,
+                city: city,
+                country: country,
+                weather_report: data
+            }).then(result => {
+                response.status(201).json({status: true, message: "Successfully created", data: result});
+            }).catch(error => {
+                console.error('Oops!! something happened %s ', error.message);
+            });
         })
         .catch(error => {
             console.error('Oops!! something happened %s ', error.message);
