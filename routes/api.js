@@ -4,6 +4,8 @@ const {body, validationResult} = require('express-validator');
 
 const router = express.Router();
 
+router.get('/', incidentController.getIncidents);
+
 router.get('/incidents', incidentController.getIncidents);
 
 router.post('/incident/add',
