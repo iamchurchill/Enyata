@@ -9,7 +9,6 @@ module.exports.getIncidents = async (request, response) => {
         }
         return response.status(200).json({status: true, message: "Successfully retrieved", data: result});
     }).catch(error => {
-        console.error('Oops!! something happened %s ', error.message);
         return response.status(500).json({status: true, message: error.message});
     });
 }
@@ -44,12 +43,10 @@ module.exports.postIncidents = (request, response) => {
             }).then(data => {
                 return response.status(201).json({status: true, message: "Successfully created", data: data});
             }).catch(error => {
-                console.error('Oops!! something happened %s ', error.message);
                 return response.status(500).json({status: true, message: error.message});
             });
         })
         .catch(error => {
-            console.error('Oops!! something happened %s ', error.message);
             return response.status(500).json({status: true, message: error.message});
         });
 }
