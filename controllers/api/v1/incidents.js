@@ -1,19 +1,20 @@
 const axios = require('axios');
-const {sequelize, Sequelize, Incidents} = require('../../../models')
+const {Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
-module.exports.getIncidents = async (request, response, next) => {
+module.exports.getIncidents = async (request, response) => {
     Incidents.findAll().then((result) => {
-        if (result.length === 0){
+        if (result.length === 0) {
             return response.status(200).json({status: false, message: "No data found"});
         }
         return response.status(200).json({status: true, message: "Successfully retrieved", data: result});
     }).catch(error => {
         console.error('Oops!! something happened %s ', error.message);
+        return response.status(500).json({status: true, message: error.message});
     });
 }
 
-module.exports.postIncidents = (request, response, next) => {
+module.exports.postIncidents = (request, response) => {
     const {WEATHER_API_URL, WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG} = process.env;
     const {client_id, incident_desc, city, country} = request.body;
     const errors = validationResult(request);
@@ -40,13 +41,15 @@ module.exports.postIncidents = (request, response, next) => {
                 country: country,
                 date: Date.now(),
                 weather_report: weather.data
-            }).then(result => {
-                return response.status(201).json({status: true, message: "Successfully created", data: result});
+            }).then(data => {
+                return response.status(201).json({status: true, message: "Successfully created", data: data});
             }).catch(error => {
                 console.error('Oops!! something happened %s ', error.message);
+                return response.status(500).json({status: true, message: error.message});
             });
         })
         .catch(error => {
             console.error('Oops!! something happened %s ', error.message);
+            return response.status(500).json({status: true, message: error.message});
         });
 }
