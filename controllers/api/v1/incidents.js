@@ -13,7 +13,7 @@ module.exports.getIncidents = async (request, response) => {
     });
 }
 
-module.exports.postIncidents = (request, response) => {
+module.exports.postIncident = (request, response) => {
     const {WEATHER_API_URL, WEATHER_API_KEY, WEATHER_LAT, WEATHER_LNG} = process.env;
     const {client_id, incident_desc, city, country} = request.body;
     const errors = validationResult(request);
