@@ -7,7 +7,7 @@ module.exports.getIncidents = async (request, response) => {
         if (result.length === 0) {
             return response.status(200).json({status: false, message: "No data found"});
         }
-        return response.status(200).json({status: true, message: "Record retrieved successfully", data: result});
+        return response.status(200).json({status: true, message: "Incidents retrieved successfully", data: result});
     }).catch(error => {
         return response.status(500).json({status: true, message: error.message});
     });
@@ -41,7 +41,7 @@ module.exports.postIncidents = (request, response) => {
                 date: Date.now(),
                 weather_report: weather.data
             }).then(data => {
-                return response.status(201).json({status: true, message: "Record created successfully", data: data});
+                return response.status(201).json({status: true, message: "Incident created successfully", data: data});
             }).catch(error => {
                 return response.status(500).json({status: true, message: error.message});
             });
