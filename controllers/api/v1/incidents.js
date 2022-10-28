@@ -33,6 +33,7 @@ module.exports.postIncidents = (request, response, next) => {
                 incident_desc: incident_desc,
                 city: city,
                 country: country,
+                date: Date.now(),
                 weather_report: weather.data
             }).then(result => {
                 return response.status(201).json({status: true, message: "Successfully created", data: result});
