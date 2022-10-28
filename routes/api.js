@@ -1,6 +1,6 @@
 const express = require('express');
 const incidentController = require('../controllers/api/v1/incidents');
-const {body, validationResult} = require('express-validator');
+const {body} = require('express-validator');
 
 const router = express.Router();
 
