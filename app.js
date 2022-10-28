@@ -12,8 +12,6 @@ const PORT = process.env.PORT || 8888;
 
 app.use(helmet());
 app.use(cors())
-app.use(morgan('combined'));
-
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
 app.use(morgan('combined', {stream: accessLogStream}))
 
