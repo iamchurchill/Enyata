@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 dotenv.config();
 
 const apiRoutes =  require('./routes/api');
@@ -7,6 +8,8 @@ const errorController = require('./controllers/api/v1/error');
 
 const PORT = process.env.PORT || 8888;
 const app = express();
+
+app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
