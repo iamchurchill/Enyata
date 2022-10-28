@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: DataTypes.DATE,
+      allowNull: false,
     },
     weather_report: {
       type: DataTypes.JSON,
