@@ -12,8 +12,8 @@ router.post('/incident/store',
     [
         body('client_id', 'Client ID is required').not().isEmpty().trim().isNumeric(),
         body('incident_desc').isString().withMessage('Incident description is required'),
-        body('city').isString().withMessage('Incident description is required'),
-        body('country').isString().withMessage('Incident description is required'),
+        body('city').not().isEmpty().trim().isString().withMessage('Incident description is required'),
+        body('country').not().isEmpty().trim().isString().withMessage('Incident description is required'),
     ], incidentController.postIncidents);
 
 module.exports = router;
