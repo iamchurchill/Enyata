@@ -8,7 +8,7 @@ router.get('/', incidentController.getIncidents);
 
 router.get('/incidents', incidentController.getIncidents);
 
-router.post('/incident/add',
+router.post('/incident/store',
     [
         body('client_id', 'Client ID is required').not().isEmpty().trim().isNumeric(),
         body('incident_desc').isString().withMessage('Incident description is required'),

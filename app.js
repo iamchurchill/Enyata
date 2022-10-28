@@ -18,7 +18,7 @@ app.use('/api/v1', apiRoutes);
 app.use(errorController.get404);
 
 app.use((error, request, response, next) => {
-   return response.status(500).json({status: false, message: error.toString()});
+   response.status(500).json({status: false, message: error.toString()});
 });
 
 app.listen(PORT, () => {
