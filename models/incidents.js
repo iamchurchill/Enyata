@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   Incidents.init({
     client_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isNumeric: true
+      }
     },
     incident_desc: {
       type: DataTypes.STRING,
