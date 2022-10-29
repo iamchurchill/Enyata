@@ -29,7 +29,7 @@ module.exports.postIncident = (request, response) => {
     })
         .then(weather => {
             if (weather.status !== 200) {
-                return response.status(500).json({status: false, message: "Something happened getting weather report"});
+                return response.status(500).json({status: false, message: "Error getting weather report"});
             }
             const incident = new Incidents();
             incident.client_id = client_id;

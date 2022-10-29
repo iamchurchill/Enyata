@@ -21,3 +21,7 @@
 ::ffff:127.0.0.1 - - [29/Oct/2022:00:42:14 +0000] "POST /api/v1/incident/store HTTP/1.1" 201 769 "-" "PostmanRuntime/7.29.2"
 ::ffff:127.0.0.1 - - [29/Oct/2022:00:42:17 +0000] "POST /api/v1/incident/store HTTP/1.1" 201 769 "-" "PostmanRuntime/7.29.2"
 ::ffff:127.0.0.1 - - [29/Oct/2022:00:42:18 +0000] "POST /api/v1/incident/store HTTP/1.1" 201 769 "-" "PostmanRuntime/7.29.2"
+::ffff:127.0.0.1 - - [29/Oct/2022:00:44:11 +0000] "POST /api/v1/incident/store HTTP/1.1" 201 770 "-" "PostmanRuntime/7.29.2"
+::ffff:127.0.0.1 - - [29/Oct/2022:00:44:31 +0000] "GET /api/v1/incidents HTTP/1.1" 200 7175 "-" "PostmanRuntime/7.29.2"
+::ffff:127.0.0.1 - - [29/Oct/2022:00:44:50 +0000] "GET /api/v1/incidents HTTP/1.1" 200 7175 "-" "PostmanRuntime/7.29.2"
+::ffff:127.0.0.1 - - [29/Oct/2022:00:44:52 +0000] "GET /api/v1/incidents HTTP/1.1" 200 7175 "-" "PostmanRuntime/7.29.2"
