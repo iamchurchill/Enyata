@@ -19,20 +19,29 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: true,
-        isNumeric: true
+        isInt: true
       }
     },
     incident_desc: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: true,
+      }
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: true,
+      }
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: true,
+      }
     },
     date: {
       type: DataTypes.DATE,
@@ -41,7 +50,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     weather_report: {
       type: DataTypes.JSON,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: true,
+      }
     }
   }, {
     sequelize,
