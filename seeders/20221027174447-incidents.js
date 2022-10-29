@@ -21,7 +21,9 @@ module.exports = {
                     city: 'Accra',
                     country: 'Ghana',
                     date: new Date(),
-                    weather_report: null
+                    weather_report: JSON.stringify({}),
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
                 },
             ],
             {}
