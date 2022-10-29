@@ -3,13 +3,13 @@ const {Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
 module.exports.getIncidents = async (request, response) => {
-    Incidents.findAll().then((result) => {
-        if (result.length === 0) {
+    Incidents.findAll().then((incidents) => {
+        if (incidents.length === 0) {
             return response.status(200).json({status: false, message: "No data found"});
         }
-        return response.status(200).json({status: true, message: "Incidents retrieved successfully", data: result});
+        return response.status(200).json({status: true, message: "Incidents retrieved successfully", data: incidents});
     }).catch(error => {
-        return response.status(500).json({status: true, message: error.message});
+        return response.status(500).json({status: false, message: error.message});
     });
 }
 
@@ -31,20 +31,29 @@ module.exports.postIncident = (request, response) => {
             if (weather.status !== 200) {
                 return response.status(500).json({status: false, message: "Something happened getting weather report"});
             }
-            Incidents.create({
-                client_id: client_id,
-                incident_desc: incident_desc,
-                city: city,
-                country: country,
-                date: Date.now(),
-                weather_report: weather.data
-            }).then(data => {
-                return response.status(201).json({status: true, message: "Incident created successfully", data: data});
+            const incident = new Incidents();
+            incident.client_id = client_id;
+            incident.incident_desc = incident_desc;
+            incident.city = city;
+            incident.country = country;
+            incident.date = Date.now();
+            incident.weather_report = weather.data;
+
+            incident.save()
+                /*Incidents.create({
+                    client_id: client_id,
+                    incident_desc: incident_desc,
+                    city: city,
+                    country: country,
+                    date: Date.now(),
+                    weather_report: weather.data
+                })*/.then(incident => {
+                return response.status(201).json({status: true, message: "Incident created successfully", data: incident});
             }).catch(error => {
-                return response.status(500).json({status: true, message: error.message});
+                return response.status(500).json({status: false, message: error.message});
             });
         })
         .catch(error => {
-            return response.status(500).json({status: true, message: error.message});
+            return response.status(500).json({status: false, message: error.message});
         });
 }
