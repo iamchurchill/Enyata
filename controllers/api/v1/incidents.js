@@ -36,7 +36,7 @@ module.exports.postIncident = (request, response) => {
                 incident_desc: incident_desc,
                 city: city,
                 country: country,
-                date: Date.now(),
+                date: new Date(),
                 weather_report: weather.data
             }).then(incident => {
                 return response.status(201).json({

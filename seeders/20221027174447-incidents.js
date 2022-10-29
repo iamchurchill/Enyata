@@ -20,7 +20,7 @@ module.exports = {
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
-                    date: Date.now(),
+                    date: new Date(),
                     weather_report: null
                 },
             ],

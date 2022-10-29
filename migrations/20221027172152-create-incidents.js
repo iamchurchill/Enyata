@@ -29,7 +29,6 @@ module.exports = {
       date: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
       },
       weather_report: {
         type: Sequelize.JSON,
