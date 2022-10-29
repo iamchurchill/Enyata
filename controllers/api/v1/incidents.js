@@ -31,24 +31,19 @@ module.exports.postIncident = (request, response) => {
             if (weather.status !== 200) {
                 return response.status(500).json({status: false, message: "Error getting weather report"});
             }
-            const incident = new Incidents();
-            incident.client_id = client_id;
-            incident.incident_desc = incident_desc;
-            incident.city = city;
-            incident.country = country;
-            incident.date = Date.now();
-            incident.weather_report = weather.data;
-
-            incident.save()
-                /*Incidents.create({
-                    client_id: client_id,
-                    incident_desc: incident_desc,
-                    city: city,
-                    country: country,
-                    date: Date.now(),
-                    weather_report: weather.data
-                })*/.then(incident => {
-                return response.status(201).json({status: true, message: "Incident created successfully", data: incident});
+            Incidents.create({
+                client_id: client_id,
+                incident_desc: incident_desc,
+                city: city,
+                country: country,
+                date: Date.now(),
+                weather_report: weather.data
+            }).then(incident => {
+                return response.status(201).json({
+                    status: true,
+                    message: "Incident created successfully",
+                    data: incident
+                });
             }).catch(error => {
                 return response.status(500).json({status: false, message: error.message});
             });
