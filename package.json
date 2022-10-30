@@ -4,7 +4,7 @@
   "description": "Enyata Coding challenge",
   "main": "app.js",
   "scripts": {
-    "test": "mocha 'tests/**/*.js' --recursive --reporter mocha-junit-reporter --timeout 10000 --exit",
+    "test": "mocha 'tests/**/*.js' --recursive --timeout 10000 --exit",
     "start": "nodemon app.js",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
