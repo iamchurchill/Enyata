@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 //Our parent block
 describe('Incidents', () => {
     beforeEach((done) => { //Before each test we empty the database
-        Incidents.remove({}, (error) => {
+        Incidents.destroy({}, (error) => {
             done();
         });
     });
