@@ -4,18 +4,18 @@ const {body} = require('express-validator');
 
 const router = express.Router();
 
-router.get('/', incidentController.getIncidents);
+router.get('/', incidentController.getWelcome);
 
-router.get('/incidents', incidentController.getIncidents);
+router.get('/api/v1/incidents', incidentController.getIncidents);
 
 router.post
 (
-    '/incident/store',
+    '/api/v1/incident/store',
     [
-        body('client_id', 'Client id is required').trim().notEmpty().withMessage('client id is required').bail().isNumeric().withMessage('client id should be an integer'),
-        body('incident_desc').trim().notEmpty().withMessage('incident description is required').isString().withMessage('string is required for description'),
-        body('city').trim().notEmpty().withMessage('city is required').isString().withMessage('string is required for city'),
-        body('country').trim().notEmpty().withMessage('country is required').isString().withMessage('string is required for country'),
+        body('client_id').trim().notEmpty().withMessage('Client id is required').bail().isNumeric().withMessage('Client id should be an number'),
+        body('incident_desc').trim().notEmpty().withMessage('Description is required').isString().withMessage('Description should be a string'),
+        body('city').trim().notEmpty().withMessage('City is required').isString().withMessage('City should be a string'),
+        body('country').trim().notEmpty().withMessage('Country is required').isString().withMessage('Country should be a string'),
     ],
     incidentController.postIncident
 );

@@ -2,6 +2,10 @@ const axios = require('axios');
 const {Incidents} = require('../../../models')
 const {validationResult} = require('express-validator');
 
+module.exports.getWelcome = async (request, response) => {
+    return response.status(200).json({status: true, message: "Enyata coding challenge"});
+}
+
 module.exports.getIncidents = async (request, response) => {
     Incidents.findAll().then((incidents) => {
         if (incidents.length === 0) {

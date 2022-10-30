@@ -16,6 +16,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.l
 app.use(morgan('combined', {stream: accessLogStream}))
 
 app.use(express.json());
+app.use(express.raw());
 app.use(express.urlencoded({extended: false}));
 
 app.set('view engine', 'ejs');
@@ -23,7 +24,7 @@ app.set('views', 'views');
 
 const apiRoutes = require('./routes/api');
 const errorController = require('./controllers/api/v1/error');
-app.use('/api/v1', apiRoutes);
+app.use(apiRoutes);
 app.use(errorController.get404);
 
 app.listen(PORT, () => console.log("Server is running on PORT: %s", PORT));
