@@ -140,7 +140,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -171,7 +171,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -202,7 +202,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -233,7 +233,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -264,7 +264,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -295,7 +295,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -326,7 +326,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',
@@ -357,7 +357,7 @@ module.exports = {
                     updatedAt: new Date(),
                 },
                 {
-                    client_id: 100,
+                    client_id: '100',
                     incident_desc: 'This is a test incident',
                     city: 'Accra',
                     country: 'Ghana',

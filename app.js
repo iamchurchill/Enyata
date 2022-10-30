@@ -26,6 +26,6 @@ const errorController = require('./controllers/api/v1/error');
 app.use('/api/v1', apiRoutes);
 app.use(errorController.get404);
 
-app.listen(PORT, () => {
-    console.log("Server is running on PORT: %s", PORT);
-});
+app.listen(PORT, () => console.log("Server is running on PORT: %s", PORT));
+
+module.exports = app;
